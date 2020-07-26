@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="link here">
+</head>
+<body>
+    <div class="topnav">
+        <a href="{{ url_for('stocks') }}"><img src="InvestatsLogo.png"style="width:100px;height:75px;"></a>
+        <a class="active" href="{{ url_for('stocks') }}"><b>Home</b></a>
+        <a href="#"style="float:right;"><b>Account</b></a>
+        <a href="{{ url_for('logout') }}"style="float:right;"><b>Logout</b></a>
+    </div>
+    
+    <button id="createBtn" type="button" onclick="createRow()"> Add Stock</button>
+    <button id="delBtn" type="button" onclick="delRow()">Remove Srock</button>
+    
+    <table id="t01">
+        <tr>
+            <th>Stock Ticker</th>
+            <th>Shares</th>
+            <th>Cost of Share</th>
+            <th>Total Cost</th>
+            <th>Share Price</th>
+            <th>Sell Price</th>
+            <th>Returns</th>
+            <th>Profit/Loss</th>
+        </tr>
+        <!--{% for i in arrayIndexes %}-->
+            <tr>
+                <td>BYND</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+            </tr>
+            <tr>
+                <td>TSLA</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+            </tr>
+            <tr>
+                <td>AAPL</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+                <td>TBD</td>
+            </tr>
+        <!--{% endfor %}-->
+    </table>
+</body>
+</html>

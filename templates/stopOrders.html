@@ -1,0 +1,59 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Demo App
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='stopOrders.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="topnav">
+  <a href="{{ url_for('stocks') }}"><img src="static/logo.png" id="logo" style="width:100px;height:75px;"></a>
+  <a href="{{ url_for('stocks') }}" class="navLinks"><b>Stocks</b></a>
+  <a href="{{ url_for('stopOrders') }}" class="navLinks"><b>Stop Orders</b></a>
+  <a href="{{ url_for('account') }}" class="navLinks"><b>Account</b></a>
+  <a href="{{ url_for('logout') }}" class="navLinks"><b>Logout</b></a>
+</div>
+
+<div>
+    <form action="/stopOrder">
+        <input type="submit" id="setBtn" value="Set Stop Order">
+    </form>
+</div>
+
+<div>
+    <table id="orders">
+        <tr>
+            <th class="headers">Stock Ticker</th>
+            <th class="headers">Starting Price</th>
+            <th class="headers">Current Price</th>
+            <th class="headers">Price for Stop</th>
+            <th class="headers">Stop (Yes/No)</th>
+        </tr>
+        {% for order in ordersList %}
+            <tr>
+                <td>{{ order.ticker }}</td>
+                <td>{{ order.startingPrice }}</td>
+                <td>{{ order.currentPrice }}</td>
+                <td>{{ order.desiredPrice }}</td>
+                {% if order.desiredPrice >= order.startingPrice %}
+                    {% if order.currentPrice >= order.desiredPrice %}
+                        <td>Yes</td>
+                    {% else %}
+                        <td>No</td>
+                    {% endif %}
+                {% else %}
+                    {% if order.desiredPrice >= order.currentPrice %}
+                        <td>Yes</td>
+                    {% else %}
+                        <td>No</td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

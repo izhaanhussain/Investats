@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Demo App
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='stopOrder.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="topnav">
+  <a href="{{ url_for('stocks') }}"><img src="static/logo.png" id="logo" style="width:100px;height:75px;"></a>
+  <a href="{{ url_for('stocks') }}" class="navLinks"><b>Stocks</b></a>
+  <a href="{{ url_for('stopOrders') }}" class="navLinks"><b>Stop Orders</b></a>
+  <a href="{{ url_for('account') }}" class="navLinks"><b>Account</b></a>
+  <a href="{{ url_for('logout') }}" class="navLinks"><b>Logout</b></a>
+</div>
+
+<div id="stopOrder">
+    <form actions="/stopOrder" method="POST" style="margin-top: 0.5%;margin-bottom: 0.5%">
+        <h1>Set Stop Order</h1>
+        <label for="stockName">Stock Ticker: </label><br>
+        <input type="text" name="stockName" id="stockName"><br><br>
+        <label for="startPrice">Starting Price: </label><br>
+        <input type="text" name="startPrice" id="startPrice"><br><br>
+        <label for="percentage">Percentage: </label><br>
+        <input type="number" name="percentage" id="percentage" step="0.01"><br><br>
+        <label for="posnev">Positive or Negative: </label><br>
+            <select name="posnev">
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
+            </select><br><br>
+        <input type="submit" value="Set Stop Stock" id="button">
+    </form>
+</div>
+{% endblock %}

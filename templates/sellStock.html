@@ -1,0 +1,33 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Demo App
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='sellStock.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="topnav">
+  <a href="{{ url_for('stocks') }}"><img src="static/logo.png" id="logo" style="width:100px;height:75px;"></a>
+  <a href="{{ url_for('stocks') }}" class="navLinks"><b>Stocks</b></a>
+  <a href="{{ url_for('stopOrders') }}" class="navLinks"><b>Stop Orders</b></a>
+  <a href="{{ url_for('account') }}" class="navLinks"><b>Account</b></a>
+  <a href="{{ url_for('logout') }}" class="navLinks"><b>Logout</b></a>
+</div>
+
+<div id="sellStock">
+    <form actions="/sellStock" method="POST" style="margin-top: 0.5%;margin-bottom: 0.5%">
+        <h1>Sell an Investment</h1>
+        <label for="id">ID: </label><br>
+        <input type="number" name="id" id="id"><br><br>
+        <label for="numSharesSold">Number of Shares Sold: </label><br>
+        <input type="number" name="numSharesSold" id="numSharesSold" step="0.01"><br><br>
+        <label for="priceSold">Price at Sell: </label><br>
+        <input type="number" name="priceSold" id="priceSold" step="0.01"><br><br>
+        <input type="submit" value="Sell Stock" id="button">
+    </form>
+</div>
+{% endblock %}

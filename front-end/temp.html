@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="link here">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="stocks.css">
 </head>
 <body>
     <div class="topnav">
@@ -14,7 +20,18 @@
         <a href="{{ url_for('logout') }}"style="float:right;"><b>Logout</b></a>
     </div>
     
-    <button id="createBtn" type="button" onclick="createRow()"> Add Stock</button>
+    <button id="createBtn" type="button" data-toggle="collapse" data-target="#addStock"> Add Stock</button>
+    <div id="addStock" class="collapse">
+        <form actions="/addStock" method="POST">
+            <label for="stockName">Stock Ticker: </label>
+            <input type="text" name="stockName" id="stockName"><br><br>
+            <label for="stockPrice">Stock Price: </label>
+            <input type="number" name="stockPrice" id="stockPrice" step="0.01"><br><br>
+            <label for="numShares">Number of Shares: </label>
+            <input type="number" name="numShares" id="numShares" step="0.01"><br><br>
+            <input type="submit" value="Add Stock">
+        </form>
+    </div>
     <button id="delBtn" type="button" onclick="delRow()">Remove Srock</button>
     
     <table id="t01">
